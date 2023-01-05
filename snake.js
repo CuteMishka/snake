@@ -16,13 +16,13 @@ document.addEventListener("keydown", function(event){
 	} else if (event.code = "KeyS"){
 		dir = "down";
 	}
-
-
-
 })
+
+let move = 50;
+
 function movement(){
 	if (dir =="up"){
-		move = snakeY + 10;
+		move = 10 + move;
 		document.getElementById("snake2").style.top = move + "px";
 	}
 }
