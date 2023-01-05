@@ -18,12 +18,27 @@ document.addEventListener("keydown", function(event){
 	}
 })
 
-let move = 50;
+let snake = document.getElementById("snake2")
 
 function movement(){
-	if (dir =="up"){
-		move = 10 + move;
-		document.getElementById("snake2").style.top = move + "px";
+	if (dir == "up"){
+		snakeY = snakeY - 10;
+		snake.style.top = snakeY + "px";
+	}
+	if (dir == "down"){
+		snakeY = snakeY + 10
+		snake.style.top = snakeY + "px";
+	}
+	if (dir == "right"){
+		snakeX = snakeX + 10;
+		snake.style.left = snakeX + "px";
+	}
+	if ( dir = "left") {
+		snakeX = snakeX - 10;
+		snake.style.left = snakeX + "px";
+	} else {
+		snakeX = 50;
+		snakeY = 50;
 	}
 }
 
