@@ -23,6 +23,7 @@ document.addEventListener("keydown", function(event){
 		dir = "down";
 	}
 })
+
 //Движение
 
 let snake = document.getElementById("snake2")
@@ -41,6 +42,15 @@ function movement(){
 		snakeX = snakeX - 10;
 		snake.style.left = snakeX + "px";
 	}
-}
 
-let game = setInterval(movement, 100)
+	if (snakeY > 110){
+		snakeY = 0;
+	} else if (snakeY <= 0){
+		snakeY = 110;
+	} else if (snakeX > 110){
+		snakeX = 0;
+	} else if (snakeX <= 0){
+		snakeX = 110;
+	}
+}
+let game = setInterval(movement, 500);
