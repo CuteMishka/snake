@@ -5,10 +5,26 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Snake Game</title>
 	<style>
+		.map{
+			width: 110px;
+			height: 110px;
+			background-color: gray;
+			position: relative;
+		}
+		.snake{
+			width: 10px;
+			height: 10px;
+			background-color: green;
+			position: absolute;
+			top: 50px;
+			left: 50px;
+		}
 	</style>
 </head>
 <body>
-	<canvas id="map" width="608" height="608"></canvas>
+	<div class="map">
+		<div class="snake"></div>
+	</div>
 	<script type="/snake.js"></script>
 </body>
 </html>
