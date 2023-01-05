@@ -1,7 +1,5 @@
 let dir;
 let block = 10;
-let snake = document.getElementById('snake2');
-
 
 document.addEventListener("keydown", function(event){
 	if (event.code == "KeyW"){
@@ -16,7 +14,8 @@ document.addEventListener("keydown", function(event){
 })
 function movement(){
 	if (dir =="up"){
-		snake.style.top += 10
+		document.getElementById("snake2").style.top += 100 + "px";
+		console.log(dir)
 	}
 }
 
