@@ -5,6 +5,7 @@ let dir;
 let snakeY = 50;
 let snakeX = 50;
 
+let snake = document.getElementById("snake2")
 
 //Определение изначальных координат змеи
 
@@ -25,33 +26,21 @@ document.addEventListener("keydown", function(event){
 	}
 })
 
-//Движение
+//Функции
 
-let snake = document.getElementById("snake2")
-
-let foodY = Math.floor(Math.random() * 11)*10
-let foodX = Math.floor(Math.random() * 11)*10
-
-function foodSpawn() {
-	document.getElementById('food').style.top = foodY + "px";
-	document.getElementById('food').style.left = foodX + "px";
-	document.getElementById('food').style.display = "block";
-}
-
-foodSpawn()
-
-function movement(){
-	
-	if ((snakeY == 100) && (dir = "down")){
+function borderTeleport() {
+	if ((snakeY == 100) && (dir == "down")){
 		snakeY = -10;
-	} else if (snakeY == 0){
+	} else if ((snakeY == 0) && (dir == "up")){
 		snakeY = 110;
-	} else if (snakeX == 100){
+	} else if ((snakeX == 100)  && (dir == "right")){
 		snakeX = -10;
-	} else if (snakeX == 0){
+	} else if ((snakeX == 0)  && (dir == "left")){
 		snakeX = 110;
 	}
+}
 
+function snakeMovement() {
 	if (dir == "up"){
 		snakeY = snakeY - 10;
 		snake.style.top = snakeY + "px";
@@ -67,4 +56,30 @@ function movement(){
 	}
 }
 
-let game = setInterval(movement, 500);
+	let foodY = Math.floor(Math.random() * 11)*10
+	let foodX = Math.floor(Math.random() * 11)*10
+
+function foodSpawn() {
+
+	document.getElementById('food').style.top = foodY + "px";
+	document.getElementById('food').style.left = foodX + "px";
+	document.getElementById('food').style.display = "block";
+}
+
+foodSpawn()
+
+function foodCheck() {
+	if ((snakeX == foodX) && (snakeY == foodY)){
+		foodY = Math.floor(Math.random() * 11)*10
+		foodX = Math.floor(Math.random() * 11)*10
+		foodSpawn()
+	} 
+}
+
+function game(){
+	borderTeleport();
+	snakeMovement();
+	foodCheck();
+}
+
+let gameProccess = setInterval(game, 500);
