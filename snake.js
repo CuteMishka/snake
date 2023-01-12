@@ -17,13 +17,13 @@ document.getElementById("snake2").style.left = snakeX + "px";
 //Изменение направления
 
 document.addEventListener("keydown", function(event){
-	if (event.code == "KeyW"){
+	if ((event.code == "KeyW") && (dir != "down")){
 		dir = "up";
-	} else if (event.code == "KeyD"){
+	} else if ((event.code == "KeyD") && (dir != "left")){
 		dir = "right";
-	} else if (event.code == "KeyA"){
+	} else if ((event.code == "KeyA") && (dir != "right")){
 		dir = "left";
-	} else if (event.code == "KeyS"){
+	} else if ((event.code == "KeyS") && (dir != "up")){
 		dir = "down";
 	}
 })
@@ -52,7 +52,7 @@ function snakeMovement() {
 	}else if (dir == "right"){
 		snakeX = snakeX + 10;
 		snake.style.left = snakeX + "px";
-	} else if ( dir == "left") {
+	} else if (dir == "left") {
 		snakeX = snakeX - 10;
 		snake.style.left = snakeX + "px";
 	}
@@ -62,7 +62,6 @@ function snakeMovement() {
 	let foodX = Math.floor(Math.random() * 11)*10
 
 function foodSpawn() {
-
 	document.getElementById('food').style.top = foodY + "px";
 	document.getElementById('food').style.left = foodX + "px";
 	document.getElementById('food').style.display = "block";
