@@ -42,13 +42,13 @@ foodSpawn()
 
 function movement(){
 	
-	if (snakeY > 110){
-		snakeY = 0;
-	} else if (snakeY < 0){
+	if (snakeY == 100){
+		snakeY = 10;
+	} else if (snakeY == 0){
 		snakeY = 110;
-	} else if (snakeX > 110){
-		snakeX = 0;
-	} else if (snakeX < 0){
+	} else if (snakeX == 100){
+		snakeX = 10;
+	} else if (snakeX == 0){
 		snakeX = 110;
 	}
 
