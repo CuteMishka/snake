@@ -41,6 +41,17 @@ function foodSpawn() {
 foodSpawn()
 
 function movement(){
+	
+	if (snakeY > 110){
+		snakeY = 0;
+	} else if (snakeY < 0){
+		snakeY = 110;
+	} else if (snakeX > 110){
+		snakeX = 0;
+	} else if (snakeX < 0){
+		snakeX = 110;
+	}
+
 	if (dir == "up"){
 		snakeY = snakeY - 10;
 		snake.style.top = snakeY + "px";
@@ -53,16 +64,6 @@ function movement(){
 	} else if ( dir == "left") {
 		snakeX = snakeX - 10;
 		snake.style.left = snakeX + "px";
-	}
-
-	if (snakeY > 110){
-		snake.style.top = 0 + "px";
-	} else if (snakeY < 0){
-		snake.style.top = 100 + "px";
-	} else if (snakeX > 110){
-		snake.style.left = 0 + "px";
-	} else if (snakeX < 0){
-		snake.style.left = 100 + "px";
 	}
 }
 
