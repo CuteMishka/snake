@@ -1,3 +1,4 @@
+
 //Создание основных переменных
 
 let dir;
@@ -28,6 +29,17 @@ document.addEventListener("keydown", function(event){
 
 let snake = document.getElementById("snake2")
 
+let foodY = Math.floor(Math.random() * 11)*10
+let foodX = Math.floor(Math.random() * 11)*10
+
+function foodSpawn() {
+	document.getElementById('food').style.top = foodY + "px";
+	document.getElementById('food').style.left = foodX + "px";
+	document.getElementById('food').style.display = "block";
+}
+
+foodSpawn()
+
 function movement(){
 	if (dir == "up"){
 		snakeY = snakeY - 10;
@@ -38,19 +50,20 @@ function movement(){
 	}else if (dir == "right"){
 		snakeX = snakeX + 10;
 		snake.style.left = snakeX + "px";
-	} else if ( dir = "left") {
+	} else if ( dir == "left") {
 		snakeX = snakeX - 10;
 		snake.style.left = snakeX + "px";
 	}
 
 	if (snakeY > 110){
-		snakeY = 0;
-	} else if (snakeY <= 0){
-		snakeY = 110;
+		snake.style.top = 0 + "px";
+	} else if (snakeY < 0){
+		snake.style.top = 100 + "px";
 	} else if (snakeX > 110){
-		snakeX = 0;
-	} else if (snakeX <= 0){
-		snakeX = 110;
+		snake.style.left = 0 + "px";
+	} else if (snakeX < 0){
+		snake.style.left = 100 + "px";
 	}
 }
+
 let game = setInterval(movement, 500);
