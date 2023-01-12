@@ -5,6 +5,8 @@ let dir;
 let snakeY = 50;
 let snakeX = 50;
 
+let score = 0;
+
 let snake = document.getElementById("snake2")
 
 //Определение изначальных координат змеи
@@ -72,14 +74,20 @@ function foodCheck() {
 	if ((snakeX == foodX) && (snakeY == foodY)){
 		foodY = Math.floor(Math.random() * 11)*10
 		foodX = Math.floor(Math.random() * 11)*10
+		score += 1;
 		foodSpawn()
 	} 
+}
+
+function score2() {
+	document.getElementById("score").innerHTML = score;
 }
 
 function game(){
 	borderTeleport();
 	snakeMovement();
 	foodCheck();
+	score2()
 }
 
 let gameProccess = setInterval(game, 500);
