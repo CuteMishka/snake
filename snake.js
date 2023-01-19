@@ -1,18 +1,24 @@
 
 //Создание основных переменных
 
+let snake = []
+
+snake[0]={
+	x: 50,
+	y: 50
+}
+let snakeBody = document.getElementById("snakebody")
+
 let dir;
-let snakeY = 50;
-let snakeX = 50;
 
 let score = 0;
 
-let snake = document.getElementById("snake2")
+let snake2 = document.getElementById("snake2")
 
 //Определение изначальных координат змеи
 
-document.getElementById("snake2").style.top = snakeY + "px";
-document.getElementById("snake2").style.left = snakeX + "px";
+document.getElementById("snake2").style.top = snake[0].x + "px";
+document.getElementById("snake2").style.left = snake[0].y + "px";
 
 //Изменение направления
 
@@ -31,31 +37,33 @@ document.addEventListener("keydown", function(event){
 //Функции
 
 function borderTeleport() {
-	if ((snakeY == 100) && (dir == "down")){
-		snakeY = -10;
-	} else if ((snakeY == 0) && (dir == "up")){
-		snakeY = 110;
-	} else if ((snakeX == 100)  && (dir == "right")){
-		snakeX = -10;
-	} else if ((snakeX == 0)  && (dir == "left")){
-		snakeX = 110;
+	if ((snake[0].y == 100) && (dir == "down")){
+		snake[0].y = -10;
+	} else if ((snake[0].y == 0) && (dir == "up")){
+		snake[0].y = 110;
+	} else if ((snake[0].x == 100)  && (dir == "right")){
+		snake[0].x = -10;
+	} else if ((snake[0].x == 0)  && (dir == "left")){
+		snake[0].x = 110;
 	}
 }
 
 function snakeMovement() {
 	if (dir == "up"){
-		snakeY = snakeY - 10;
-		snake.style.top = snakeY + "px";
+		snake[0].y = snake[0].y - 10;
+		snake2.style.top = snake[0].y + "px";
 	}else if (dir == "down"){
-		snakeY = snakeY + 10
-		snake.style.top = snakeY + "px";
+		snake[0].y = snake[0].y + 10
+		snake2.style.top = snake[0].y + "px";
 	}else if (dir == "right"){
-		snakeX = snakeX + 10;
-		snake.style.left = snakeX + "px";
+		snake[0].x = snake[0].x + 10;
+		snake2.style.left = snake[0].x + "px";
 	} else if (dir == "left") {
-		snakeX = snakeX - 10;
-		snake.style.left = snakeX + "px";
+		snake[0].x = snake[0].x - 10;
+		snake2.style.left = snake[0].x + "px";
 	}
+	snakeBody.style.top = snake[0].y + "px";
+	snakeBody.style.left = snake[0].x + "px"
 }
 
 	let foodY = Math.floor(Math.random() * 11)*10
@@ -70,12 +78,23 @@ function foodSpawn() {
 foodSpawn()
 
 function foodCheck() {
-	if ((snakeX == foodX) && (snakeY == foodY)){
+	if ((snake[0].x == foodX) && (snake[0].y == foodY)){
 		foodY = Math.floor(Math.random() * 11)*10
 		foodX = Math.floor(Math.random() * 11)*10
 		score += 1;
 		foodSpawn()
+		snake.unshift(snakeBody)
 	} 
+}
+
+snakeBody = {
+		x: snake[0].x,
+		y: snake[0].y
+	}
+
+function snakeLength() {
+	let snakeY = snake[0].x;
+	let snakeX = snake[0].y;
 }
 
 function score2() {
@@ -83,10 +102,12 @@ function score2() {
 }
 
 function game(){
+	snakeLength()
 	borderTeleport();
 	snakeMovement();
 	foodCheck();
 	score2()
 }
 
-let gameProccess = setInterval(game, 500);
+
+let gameProccess = setInterval(game, 100);
