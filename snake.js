@@ -19,6 +19,7 @@ snake[3]={
 	x:20,
 	y:50
 }
+let map = document.getElementById("map")
 
 let snakeBody = document.getElementById("snakebody")
 
@@ -106,8 +107,23 @@ function foodCheck() {
 		foodX = Math.floor(Math.random() * 11)*10
 		score += 1;
 		foodSpawn()
+		snakeLength()
 	} 
 }
+function snakeLength() {
+	snakeNumber = snake.length++
+	let div = document.createElement("div")
+  	div.innerHTML = "<div class='snakeBody' id='snakebody"+ snakeNumber +"'></div>"
+  	map.appendChild(div);
+
+	snake[snakeNumber]={
+		x: snake[0].x,
+		y: snake[0].y,
+	}
+	document.getElementById("snakebody"+ snakeNumber).style.top = snake[0].x + "px"
+	document.getElementById("snakebody"+ snakeNumber).style.left = snake[0].y + "px"
+}
+
 
 function score2() {
 	document.getElementById("score").innerHTML = score;
