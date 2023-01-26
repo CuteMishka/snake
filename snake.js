@@ -68,8 +68,8 @@ function snakeMovement() {
 		snake[0].x = snake[0].x - 10;
 		snake2.style.left = snake[0].x + "px";
 	}
-	snakeBody.style.top = snake[1].y + "px";
-	snakeBody.style.left = snake[1].x + "px"
+	document.getElementById("snakebody").style.top = snake[1].y + "px";
+	document.getElementById("snakebody").style.left = snake[1].x + "px"
 }
 
 	let foodY = Math.floor(Math.random() * 11)*10
