@@ -7,6 +7,11 @@ snake[0]={
 	x: 50,
 	y: 50
 }
+snake[1]={
+	x:40,
+	y:50
+}
+
 let snakeBody = document.getElementById("snakebody")
 
 let dir;
@@ -49,6 +54,7 @@ function borderTeleport() {
 }
 
 function snakeMovement() {
+	snake[1]=snake[0]
 	if (dir == "up"){
 		snake[0].y = snake[0].y - 10;
 		snake2.style.top = snake[0].y + "px";
@@ -62,8 +68,8 @@ function snakeMovement() {
 		snake[0].x = snake[0].x - 10;
 		snake2.style.left = snake[0].x + "px";
 	}
-	snakeBody.style.top = snake[0].y + "px";
-	snakeBody.style.left = snake[0].x + "px"
+	snakeBody.style.top = snake[1].y + "px";
+	snakeBody.style.left = snake[1].x + "px"
 }
 
 	let foodY = Math.floor(Math.random() * 11)*10
