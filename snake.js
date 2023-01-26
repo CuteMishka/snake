@@ -11,6 +11,14 @@ snake[1]={
 	x:40,
 	y:50
 }
+snake[2]={
+	x:30,
+	y:50
+}
+snake[3]={
+	x:20,
+	y:50
+}
 
 let snakeBody = document.getElementById("snakebody")
 
@@ -54,7 +62,12 @@ function borderTeleport() {
 }
 
 function snakeMovement() {
-	snake[1]=snake[0]
+	snake[3].y = snake[2].y
+	snake[3].x = snake[2].x
+	snake[2].y = snake[1].y
+	snake[2].x = snake[1].x
+	snake[1].y = snake[0].y
+	snake[1].x = snake[0].x
 	if (dir == "up"){
 		snake[0].y = snake[0].y - 10;
 		snake2.style.top = snake[0].y + "px";
@@ -69,7 +82,11 @@ function snakeMovement() {
 		snake2.style.left = snake[0].x + "px";
 	}
 	document.getElementById("snakebody").style.top = snake[1].y + "px";
-	document.getElementById("snakebody").style.left = snake[1].x + "px"
+	document.getElementById("snakebody").style.left = snake[1].x + "px";
+	document.getElementById("snakebody2").style.top = snake[2].y + "px";
+	document.getElementById("snakebody2").style.left = snake[2].x + "px"
+	document.getElementById("snakebody3").style.top = snake[3].y + "px";
+	document.getElementById("snakebody3").style.left = snake[3].x + "px"
 }
 
 	let foodY = Math.floor(Math.random() * 11)*10
@@ -89,18 +106,7 @@ function foodCheck() {
 		foodX = Math.floor(Math.random() * 11)*10
 		score += 1;
 		foodSpawn()
-		snake.unshift(snakeBody)
 	} 
-}
-
-snakeBody = {
-		x: snake[0].x,
-		y: snake[0].y
-	}
-
-function snakeLength() {
-	let snakeY = snake[0].x;
-	let snakeX = snake[0].y;
 }
 
 function score2() {
@@ -108,7 +114,6 @@ function score2() {
 }
 
 function game(){
-	snakeLength()
 	borderTeleport();
 	snakeMovement();
 	foodCheck();
