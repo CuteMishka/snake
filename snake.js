@@ -7,18 +7,6 @@ snake[0]={
 	x: 50,
 	y: 50
 }
-snake[1]={
-	x:40,
-	y:50
-}
-snake[2]={
-	x:30,
-	y:50
-}
-snake[3]={
-	x:20,
-	y:50
-}
 let map = document.getElementById("map")
 
 let snakeBody = document.getElementById("snakebody")
@@ -62,34 +50,6 @@ function borderTeleport() {
 	}
 }
 
-function snakeMovement() {
-	snake[3].y = snake[2].y
-	snake[3].x = snake[2].x
-	snake[2].y = snake[1].y
-	snake[2].x = snake[1].x
-	snake[1].y = snake[0].y
-	snake[1].x = snake[0].x
-	if (dir == "up"){
-		snake[0].y = snake[0].y - 10;
-		snake2.style.top = snake[0].y + "px";
-	}else if (dir == "down"){
-		snake[0].y = snake[0].y + 10
-		snake2.style.top = snake[0].y + "px";
-	}else if (dir == "right"){
-		snake[0].x = snake[0].x + 10;
-		snake2.style.left = snake[0].x + "px";
-	} else if (dir == "left") {
-		snake[0].x = snake[0].x - 10;
-		snake2.style.left = snake[0].x + "px";
-	}
-	document.getElementById("snakebody").style.top = snake[1].y + "px";
-	document.getElementById("snakebody").style.left = snake[1].x + "px";
-	document.getElementById("snakebody2").style.top = snake[2].y + "px";
-	document.getElementById("snakebody2").style.left = snake[2].x + "px"
-	document.getElementById("snakebody3").style.top = snake[3].y + "px";
-	document.getElementById("snakebody3").style.left = snake[3].x + "px"
-}
-
 	let foodY = Math.floor(Math.random() * 11)*10
 	let foodX = Math.floor(Math.random() * 11)*10
 
@@ -110,19 +70,41 @@ function foodCheck() {
 		snakeLength()
 	} 
 }
+
+let snakeNumber
+
 function snakeLength() {
 	snakeNumber = snake.length++
 	let div = document.createElement("div")
   	div.innerHTML = "<div class='snakeBody' id='snakebody"+ snakeNumber +"'></div>"
   	map.appendChild(div);
+}
 
-	snake[snakeNumber]={
+snake[snakeNumber]={
 		x: snake[0].x,
 		y: snake[0].y,
 	}
-	document.getElementById("snakebody"+ snakeNumber).style.top = snake[0].x + "px"
-	document.getElementById("snakebody"+ snakeNumber).style.left = snake[0].y + "px"
-}
+
+function snakeMovement() {
+	
+	if (dir == "up"){
+		snake[0].y = snake[0].y - 10;
+		snake2.style.top = snake[0].y + "px";
+	}else if (dir == "down"){
+		snake[0].y = snake[0].y + 10
+		snake2.style.top = snake[0].y + "px";
+	}else if (dir == "right"){
+		snake[0].x = snake[0].x + 10;
+		snake2.style.left = snake[0].x + "px";
+	} else if (dir == "left") {
+		snake[0].x = snake[0].x - 10;
+		snake2.style.left = snake[0].x + "px";
+	}
+	
+
+	document.getElementById("snakebody"+ snakeNumber).style.top = snake[0].y + "px"
+	document.getElementById("snakebody"+ snakeNumber).style.left = snake[0].x + "px"
+}	
 
 
 function score2() {
