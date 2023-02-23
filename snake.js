@@ -1,21 +1,19 @@
-
+	
 //Создание основных переменных
 
 let snake = []
 
+let map = document.getElementById("map")
+let snakeBody = document.getElementById("snakebody")
+let score = 0;
+let snake2 = document.getElementById("snake2")
+let dir
 snake[0]={
 	x: 50,
-	y: 50
+	y: 50,
 }
-let map = document.getElementById("map")
+let snakebody
 
-let snakeBody = document.getElementById("snakebody")
-
-let dir;
-
-let score = 0;
-
-let snake2 = document.getElementById("snake2")
 
 //Определение изначальных координат змеи
 
@@ -61,32 +59,20 @@ function foodSpawn() {
 
 foodSpawn()
 
-function foodCheck() {
+function snakeMovement() {
+
+	for (let i = snake.length - 1; i > 0; i--) {
+    	snake[i].x = snake[i - 1].x;
+    	snake[i].y = snake[i - 1].y;
+    }
+
 	if ((snake[0].x == foodX) && (snake[0].y == foodY)){
 		foodY = Math.floor(Math.random() * 11)*10
 		foodX = Math.floor(Math.random() * 11)*10
 		score += 1;
-		foodSpawn()
 		snakeLength()
-	} 
-}
-
-let snakeNumber
-
-function snakeLength() {
-	snakeNumber = snake.length++
-	let div = document.createElement("div")
-  	div.innerHTML = "<div class='snakeBody' id='snakebody"+ snakeNumber +"'></div>"
-  	map.appendChild(div);
-}
-
-snake[snakeNumber]={
-		x: snake[0].x,
-		y: snake[0].y,
+		foodSpawn()
 	}
-
-function snakeMovement() {
-	
 	if (dir == "up"){
 		snake[0].y = snake[0].y - 10;
 		snake2.style.top = snake[0].y + "px";
@@ -100,12 +86,18 @@ function snakeMovement() {
 		snake[0].x = snake[0].x - 10;
 		snake2.style.left = snake[0].x + "px";
 	}
-	
-
-	document.getElementById("snakebody"+ snakeNumber).style.top = snake[0].y + "px"
-	document.getElementById("snakebody"+ snakeNumber).style.left = snake[0].x + "px"
 }	
 
+function snakeLength() {
+	let newHead = document.createElement("div")
+	newHead.innerHTML = '<div id="sn'+snake.length+'"></div>'
+	map.appendChild(newHead)
+	newHeadVisual = document.getElementById("sn",snake.length)
+	newHead.style.backgroundColor = "green"
+	newHead.style.width = 10 + "px"
+	newHead.style.height = 10 + "px"
+	snake.push(newHead)
+}
 
 function score2() {
 	document.getElementById("score").innerHTML = score;
@@ -114,7 +106,6 @@ function score2() {
 function game(){
 	borderTeleport();
 	snakeMovement();
-	foodCheck();
 	score2()
 }
 
