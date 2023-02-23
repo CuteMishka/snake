@@ -63,8 +63,8 @@ function snakeMovement() {
 	for (let i = snake.length - 1; i > 0; i--) {
     	snake[i].x = snake[i - 1].x;
     	snake[i].y = snake[i - 1].y;
-    	snake[snake.length - 1].el.style.top = snake[snake.length - 1].y + "px"
-		snake[snake.length - 1].el.style.left = snake[snake.length - 1].x + "px"
+    	snake[i].el.style.top = snake[i].y + "px"
+		snake[i].el.style.left = snake[i].x + "px"
     }
 	if ((snake[0].x == foodX) && (snake[0].y == foodY)){
 		foodY = Math.floor(Math.random() * 11)*10
