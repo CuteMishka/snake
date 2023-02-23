@@ -63,8 +63,9 @@ function snakeMovement() {
 	for (let i = snake.length - 1; i > 0; i--) {
     	snake[i].x = snake[i - 1].x;
     	snake[i].y = snake[i - 1].y;
+    	snake[snake.length - 1].el.style.top = snake[snake.length - 1].y + "px"
+		snake[snake.length - 1].el.style.left = snake[snake.length - 1].x + "px"
     }
-
 	if ((snake[0].x == foodX) && (snake[0].y == foodY)){
 		foodY = Math.floor(Math.random() * 11)*10
 		foodX = Math.floor(Math.random() * 11)*10
@@ -89,17 +90,17 @@ function snakeMovement() {
 
 function snakeLength() {
 	let newHead = document.createElement("div")
-	newHead.innerHTML = '<div id="sn'+snake.length+'"></div>'
+	newHead.id = "sn" + snake.length
+	newHead.style.backgroundColor = "green"
+	newHead.style.width = 10 + "px"
+	newHead.style.height = 10 + "px"
+	newHead.style.position = "absolute"
 	map.appendChild(newHead)
-	let snakenewbody = document.getElementById("sn", snake.length)
-	snakenewbody = {
+	let snakenewbody = {
 		x: snake[snake.length - 1].x,
-		y: snake[snake.length - 1].y
+		y: snake[snake.length - 1].y,
+		el: newHead
 	}
-	snakenewbody.style.backgroundColor = "green"
-	snakenewbody.style.width = 10 + "px"
-	snakenewbody.style.height = 10 + "px"
-	snakenewbody.style.position = "absolute"
 	snake.push(snakenewbody)
 }
 
