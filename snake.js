@@ -60,7 +60,6 @@ function foodSpawn() {
 foodSpawn()
 
 function snakeMovement() {
-
 	for (let i = snake.length - 1; i > 0; i--) {
     	snake[i].x = snake[i - 1].x;
     	snake[i].y = snake[i - 1].y;
@@ -82,7 +81,7 @@ function snakeMovement() {
 	}else if (dir == "right"){
 		snake[0].x = snake[0].x + 10;
 		snake2.style.left = snake[0].x + "px";
-	} else if (dir == "left") {
+	}else if (dir == "left") {
 		snake[0].x = snake[0].x - 10;
 		snake2.style.left = snake[0].x + "px";
 	}
@@ -92,11 +91,16 @@ function snakeLength() {
 	let newHead = document.createElement("div")
 	newHead.innerHTML = '<div id="sn'+snake.length+'"></div>'
 	map.appendChild(newHead)
-	newHeadVisual = document.getElementById("sn",snake.length)
-	newHead.style.backgroundColor = "green"
-	newHead.style.width = 10 + "px"
-	newHead.style.height = 10 + "px"
-	snake.push(newHead)
+	let snakenewbody = document.getElementById("sn", snake.length)
+	snakenewbody = {
+		x: snake[snake.length - 1].x,
+		y: snake[snake.length - 1].y
+	}
+	snakenewbody.style.backgroundColor = "green"
+	snakenewbody.style.width = 10 + "px"
+	snakenewbody.style.height = 10 + "px"
+	snakenewbody.style.position = "absolute"
+	snake.push(snakenewbody)
 }
 
 function score2() {
