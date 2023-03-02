@@ -86,6 +86,14 @@ function snakeMovement() {
 		snake[0].x = snake[0].x - 10;
 		snake2.style.left = snake[0].x + "px";
 	}
+	if (snake.length >= 4) { // проверяем столкновение только после достижения нужной длины
+    for (let i = 1; i < snake.length; i++) {
+      if ((snake[0].x == snake[i].x) && (snake[0].y == snake[i].y)) {
+        clearInterval(gameProccess);
+        alert("Game Over! Your score is " + score);
+      }
+    }
+  }
 }	
 
 function snakeLength() {
@@ -95,6 +103,7 @@ function snakeLength() {
 	newHead.style.width = 10 + "px"
 	newHead.style.height = 10 + "px"
 	newHead.style.position = "absolute"
+	newHead.style.boxShadow = "0px 5px 5px -5px rgba(34, 60, 80, 0.6)"
 	map.appendChild(newHead)
 	let snakenewbody = {
 		x: snake[snake.length - 1].x,
@@ -115,4 +124,4 @@ function game(){
 }
 
 
-let gameProccess = setInterval(game, 100);
+let gameProccess = setInterval(game, 150);
