@@ -37,19 +37,19 @@ document.addEventListener("keydown", function(event){
 //Функции
 
 function borderTeleport() {
-	if ((snake[0].y == 100) && (dir == "down")){
+	if ((snake[0].y == 330) && (dir == "down")){
 		snake[0].y = -10;
 	} else if ((snake[0].y == 0) && (dir == "up")){
-		snake[0].y = 110;
-	} else if ((snake[0].x == 100)  && (dir == "right")){
+		snake[0].y = 330;
+	} else if ((snake[0].x == 330)  && (dir == "right")){
 		snake[0].x = -10;
 	} else if ((snake[0].x == 0)  && (dir == "left")){
-		snake[0].x = 110;
+		snake[0].x = 330;
 	}
 }
 
-	let foodY = Math.floor(Math.random() * 11)*10
-	let foodX = Math.floor(Math.random() * 11)*10
+	let foodY = Math.floor(Math.random() * 33)*10
+	let foodX = Math.floor(Math.random() * 33)*10
 
 function foodSpawn() {
 	document.getElementById('food').style.top = foodY + "px";
@@ -67,8 +67,8 @@ function snakeMovement() {
 		snake[i].el.style.left = snake[i].x + "px"
     }
 	if ((snake[0].x == foodX) && (snake[0].y == foodY)){
-		foodY = Math.floor(Math.random() * 11)*10
-		foodX = Math.floor(Math.random() * 11)*10
+		foodY = Math.floor(Math.random() * 33)*10
+		foodX = Math.floor(Math.random() * 33)*10
 		score += 1;
 		snakeLength()
 		foodSpawn()
