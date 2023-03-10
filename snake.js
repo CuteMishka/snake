@@ -122,6 +122,4 @@ function game(){
 	snakeMovement();
 	score2()
 }
-
-
 let gameProccess = setInterval(game, 150);
