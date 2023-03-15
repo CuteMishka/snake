@@ -9,8 +9,8 @@ let score = 0;
 let snake2 = document.getElementById("snake2")
 let dir
 snake[0]={
-	x: 50,
-	y: 50,
+	x: 160,
+	y: 160,
 }
 let snakebody
 
@@ -70,18 +70,18 @@ document.addEventListener("keydown", function(event){
 
 function borderTeleport() {
 	if ((snake[0].y == 330) && (dir == "down")){
-		snake[0].y = -10;
+		snake[0].y = 0;
 	} else if ((snake[0].y == 0) && (dir == "up")){
 		snake[0].y = 330;
 	} else if ((snake[0].x == 330)  && (dir == "right")){
-		snake[0].x = -10;
+		snake[0].x = 0;
 	} else if ((snake[0].x == 0)  && (dir == "left")){
 		snake[0].x = 330;
 	}
 }
 
-	let foodY = Math.floor(Math.random() * 33)*10
-	let foodX = Math.floor(Math.random() * 33)*10
+let foodY = Math.floor(Math.random() * 31 + 2) * 10;
+let foodX = Math.floor(Math.random() * 31 + 2) * 10;
 
 function foodSpawn() {
 	document.getElementById('food').style.top = foodY + "px";
