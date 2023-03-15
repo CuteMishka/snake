@@ -155,4 +155,3 @@ function game(){
 	score2()
 }
 let gameProccess = setInterval(game, 50);
-let gameProccess = setInterval(game, 50);
