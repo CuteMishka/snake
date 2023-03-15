@@ -14,6 +14,38 @@ snake[0]={
 }
 let snakebody
 
+// Обработчик события touchstart
+document.addEventListener("touchstart", function(event) {
+  startX = event.touches[0].pageX;
+  startY = event.touches[0].pageY;
+});
+
+// Обработчик события touchmove
+document.addEventListener("touchmove", function(event) {
+  event.preventDefault();
+  endX = event.touches[0].pageX;
+  endY = event.touches[0].pageY;
+});
+
+// Обработчик события touchend
+document.addEventListener("touchend", function(event) {
+  let deltaX = endX - startX;
+  let deltaY = endY - startY;
+
+  if (Math.abs(deltaX) > Math.abs(deltaY)) { // движение по горизонтали
+    if (deltaX > 0 && dir != "left") { // свайп вправо
+      dir = "right";
+    } else if (deltaX < 0 && dir != "right") { // свайп влево
+      dir = "left";
+    }
+  } else { // движение по вертикали
+    if (deltaY > 0 && dir != "up") { // свайп вниз
+      dir = "down";
+    } else if (deltaY < 0 && dir != "down") { // свайп вверх
+      dir = "up";
+    }
+  }
+});
 
 //Определение изначальных координат змеи
 
@@ -118,8 +150,8 @@ function score2() {
 }
 
 function game(){
-	borderTeleport();
 	snakeMovement();
+	borderTeleport();
 	score2()
 }
-let gameProccess = setInterval(game, 150);
+let gameProccess = setInterval(game, 50);
