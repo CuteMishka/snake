@@ -8,6 +8,7 @@ let snakeBody = document.getElementById("snakebody")
 let score = 0;
 let snake2 = document.getElementById("snake2")
 let dir
+let speed = 50
 snake[0]={
 	x: 160,
 	y: 160,
@@ -83,6 +84,15 @@ function borderTeleport() {
 let foodY = Math.floor(Math.random() * 31 + 2) * 10;
 let foodX = Math.floor(Math.random() * 31 + 2) * 10;
 
+let effectY = Math.floor(Math.random() * 31 + 2) * 10;
+let effectX = Math.floor(Math.random() * 31 + 2) * 10;
+
+function effect() {
+	document.getElementById('poison').style.top = effectY + "px";
+	document.getElementById('poison').style.left = effectX + "px";
+	document.getElementById('poison').style.display = "block";
+}
+
 function foodSpawn() {
 	document.getElementById('food').style.top = foodY + "px";
 	document.getElementById('food').style.left = foodX + "px";
@@ -105,6 +115,14 @@ function snakeMovement() {
 		snakeLength()
 		foodSpawn()
 	}
+	if ((snake[0].x == effectX) && (snake[0].y == effectY)){
+		effectY = Math.floor(Math.random() * 33)*10
+		effectX = Math.floor(Math.random() * 33)*10
+		score += 1;
+		speed += 10;
+		snake.pop()
+		effect();
+	}
 	if (dir == "up"){
 		snake[0].y = snake[0].y - 10;
 		snake2.style.top = snake[0].y + "px";
@@ -123,10 +141,9 @@ function snakeMovement() {
       if ((snake[0].x == snake[i].x) && (snake[0].y == snake[i].y)) {
         clearInterval(gameProccess);
         alert("Game Over! Your score is " + score);
-      }
     }
   }
-}	
+}}
 
 function snakeLength() {
 	let newHead = document.createElement("div")
@@ -154,4 +171,5 @@ function game(){
 	borderTeleport();
 	score2()
 }
-let gameProccess = setInterval(game, 50);
+let gameProccess = setInterval(game, speed);
+effect()
