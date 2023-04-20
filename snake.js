@@ -70,13 +70,13 @@ document.addEventListener("keydown", function(event){
 //Функции
 
 function borderTeleport() {
-	if ((snake[0].y == 330) && (dir == "down")){
+	if ((snake[0].y > 330) && (dir == "down")){
 		snake[0].y = 0;
-	} else if ((snake[0].y == 0) && (dir == "up")){
+	} else if ((snake[0].y < 0) && (dir == "up")){
 		snake[0].y = 330;
-	} else if ((snake[0].x == 330)  && (dir == "right")){
+	} else if ((snake[0].x > 330)  && (dir == "right")){
 		snake[0].x = 0;
-	} else if ((snake[0].x == 0)  && (dir == "left")){
+	} else if ((snake[0].x < 0)  && (dir == "left")){
 		snake[0].x = 330;
 	}
 }
@@ -114,6 +114,7 @@ function snakeMovement() {
 		score += 1;
 		snakeLength()
 		foodSpawn()
+		effect()
 	}
 	if ((snake[0].x == effectX) && (snake[0].y == effectY)){
 		effectY = Math.floor(Math.random() * 33)*10
