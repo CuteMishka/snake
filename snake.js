@@ -1,4 +1,4 @@
-	
+
 //Создание основных переменных
 
 let snake = []
@@ -8,7 +8,7 @@ let snakeBody = document.getElementById("snakebody")
 let score = 0;
 let snake2 = document.getElementById("snake2")
 let dir
-let speed = 50
+let speed = 25
 snake[0]={
 	x: 160,
 	y: 160,
