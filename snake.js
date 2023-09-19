@@ -8,7 +8,7 @@ let snakeBody = document.getElementById("snakebody")
 let score = 0;
 let snake2 = document.getElementById("snake2")
 let dir
-let speed = 25
+let speed = 50
 snake[0]={
 	x: 160,
 	y: 160,
@@ -119,7 +119,7 @@ function snakeMovement() {
 	if ((snake[0].x == effectX) && (snake[0].y == effectY)){
 		effectY = Math.floor(Math.random() * 33)*10
 		effectX = Math.floor(Math.random() * 33)*10
-		score += 1;
+		score = score - 1;
 		speed += 10;
 		snake.pop()
 		effect();
